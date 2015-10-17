@@ -78,4 +78,4 @@ module Filestorage
 
   end   # of class Local
 
-end   # of module LocalFilestorage
+end   # of module Filestorage
