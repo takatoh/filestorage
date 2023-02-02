@@ -1,14 +1,14 @@
 # encoding: utf-8
 
-require 'pathname'
-require 'fileutils'
-require 'find'
+require "pathname"
+require "fileutils"
+require "find"
 
 
 module Filestorage
 
   class Local
-  
+
     def initialize(base_dir)
       @base_dir = Pathname.new(base_dir)
     end
