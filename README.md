@@ -6,7 +6,7 @@ A simple file storage.
 
 Add this line to your application's Gemfile:
 
-    gem 'filestorage'
+    gem "filestorage"
 
 And then execute:
 
@@ -16,26 +16,57 @@ Or install it yourself as:
 
     $ gem install filestorage
 
-## Usage
+## Store to local file system
 
 Create a instance.
 
-    require 'filestorage'
-    storage = Filesotrage::Local.new(base_dir)
+```ruby
+require "filestorage"
+storage = Filesotrage::Local.new(base_dir)
+```
 
 Store a file to path.
 
-    storage.store("foo/bar/baz.txt", file)
+```ruby
+storage.store("foo/bar/baz.txt", file)
+```
 
-And get the file. `get' method returns instance of File class.
+And get the file. `get` method returns instance of File class.
 
-    file = storage.get("foo/bar/baz.txt")
-    content = file.read
+```ruby
+file = storage.get("foo/bar/baz.txt")
+content = file.read
+```
 
-## Contributing
+## Store to local with random file name
 
-1. Fork it ( https://github.com/takatoh/filestorage/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Use `Fielstorage:LocalRandom` class.
+
+Create a instance.
+
+```ruby
+require "filestorage"
+storage = Filesotrage::LocalRandom.new(base_dir, letters, length)
+```
+
+`letters` is candidate characters to build a filename, default to lower latin alphabets and digits.
+`length` is for filename, default to `8`.
+
+Store a file.
+
+```ruby
+storage.store(file)
+```
+
+Returns path to stored file, e.g. "5Q/CY/5QCyP0gT.txt"
+
+And get the file. `get` method returns instance of File class.
+
+```ruby
+file = storage.get("5Q/CY/5QCyP0gT.txt")
+content = file.read
+```
+
+## License
+
+MIT license
