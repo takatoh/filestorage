@@ -61,20 +61,20 @@ module Filestorage
 
     private
 
-      def sweep(path)
-        paths(path).reverse.each do |p|
-          FileUtils.rmdir(p) if p.children.empty?
-        end
+    def sweep(path)
+      paths(path).reverse.each do |p|
+        FileUtils.rmdir(p) if p.children.empty?
       end
+    end
 
-      def paths(path)
-        p = []
-        until path.to_s == @base_dir.to_s
-          p << path
-          path = path.parent
-        end
-        p.reverse
+    def paths(path)
+      p = []
+      until path.to_s == @base_dir.to_s
+        p << path
+        path = path.parent
       end
+      p.reverse
+    end
 
   end   # of class Local
 
