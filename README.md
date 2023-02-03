@@ -46,10 +46,9 @@ Create a instance.
 
 ```ruby
 require "filestorage"
-storage = Filesotrage::LocalRandom.new(base_dir, letters, length)
+storage = Filesotrage::LocalRandom.new(base_dir, length)
 ```
 
-`letters` is candidate characters to build a filename, default to lower latin alphabets and digits.
 `length` is for filename, default to `8`.
 
 Store a file.
