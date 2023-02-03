@@ -19,9 +19,9 @@ module Filestorage
       @filename_length = length || 8
     end
 
-    def store(file, ext)
+    def store(file)
       begin
-        filename = gen_random + ext
+        filename = gen_random + File.extname(file)
         path = [filename[0, 2].upcase, filename[2, 2].upcase, filename].join("/")
         super(file, path)
       rescue AlreadyExist
