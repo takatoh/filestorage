@@ -20,9 +20,13 @@ module Filestorage
     end
 
     def store(file, ext)
-      filename = gen_random + ext
-      path = [filename[0, 2].upcase, filename[2, 2].upcase, filename].join("/")
-      super(file, path)
+      begin
+        filename = gen_random + ext
+        path = [filename[0, 2].upcase, filename[2, 2].upcase, filename].join("/")
+        super(file, path)
+      rescue AlreadyExist
+        retry
+      end
       path
     end
 
