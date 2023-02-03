@@ -4,7 +4,6 @@ require "pathname"
 require "fileutils"
 require "find"
 require "securerandom"
-require "filesotrage"
 
 
 module Filestorage
@@ -18,13 +17,14 @@ module Filestorage
       @base_dir = Pathname.new(base_dir)
       @filename_length = length
       @letter_pool = DEFAULT_LETTERS
+      @pool_size = @letter_pool.size
     end
 
     def store(file)
       begin
         filename = gen_random + File.extname(file)
         path = [filename[0, 2].upcase, filename[2, 2].upcase, filename].join("/")
-        super(file, path)
+        super(path, file)
       rescue AlreadyExist
         retry
       end
@@ -36,7 +36,7 @@ module Filestorage
     def gen_random
       s = []
       @filename_length.times do
-        c = up(@letter_poool[SecureRandom.random_number(@filename_length)])
+        c = up(@letter_pool[SecureRandom.random_number(@pool_size)])
         s << c
       end
       s.join
