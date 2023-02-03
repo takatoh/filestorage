@@ -12,11 +12,12 @@ module Filestorage
   class LocalRandom < Local
 
     DEFAULT_LETTERS = "abcdefghijklmnopqrstuvwxyz0123456789"
+    DEFAULT_LENGTH = 8
 
-    def initialize(base_dir, pool = nil, length = nil)
+    def initialize(base_dir, length = DEFAULT_LENGTH)
       @base_dir = Pathname.new(base_dir)
-      @letter_pool = pool || DEFAULT_LETTERS
-      @filename_length = length || 8
+      @filename_length = length
+      @letter_pool = DEFAULT_LETTERS
     end
 
     def store(file)
