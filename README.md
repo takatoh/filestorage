@@ -40,7 +40,7 @@ content = file.read
 
 ## Store to local with random file name
 
-Use `Fielstorage:LocalRandom` class.
+Use `Fielstorage::LocalRandom` class.
 
 Create a instance.
 
