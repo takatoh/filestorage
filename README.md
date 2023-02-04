@@ -28,7 +28,7 @@ storage = Filesotrage::Local.new(base_dir)
 Store a file to path.
 
 ```ruby
-storage.store("foo/bar/baz.txt", file)
+storage.store(file, "foo/bar/baz.txt")
 ```
 
 And get the file. `get` method returns instance of File class.
