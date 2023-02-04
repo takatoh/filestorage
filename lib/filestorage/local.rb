@@ -13,7 +13,7 @@ module Filestorage
       @base_dir = Pathname.new(base_dir)
     end
 
-    def store(path, file)
+    def store(file, path)
       fullpath = @base_dir + path
       raise AlreadyExist.new("Already exist #{path}") if File.exist?(fullpath)
       FileUtils.mkdir_p(fullpath.parent)
