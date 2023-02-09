@@ -27,10 +27,8 @@ module Filestorage
         d1 = filename[0, 2].upcase
         d2 = filename[2, 2].upcase
         path = Pathname.new(d1) / d2
-        if @case_sensitive && path.exist?
-          if path.children.map{|f| f.basename.to_s.upcase }.include?(filename.upcase)
-            raise AlreadyExist.new("Already exist #{path / filename}")
-          end
+        if sensitive_file_exist?(path, filename)
+          raise AlreadyExist.new("Already exist #{path / filename}")
         end
         path = path / filename
         super(file, path)
