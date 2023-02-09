@@ -13,7 +13,7 @@ module Filestorage
     DEFAULT_LETTERS = "abcdefghijklmnopqrstuvwxyz0123456789"
     DEFAULT_LENGTH = 8
 
-    def initialize(base_dir, length = DEFAULT_LENGTH)
+    def initialize(base_dir, length: DEFAULT_LENGTH)
       @base_dir = Pathname.new(base_dir)
       @filename_length = length
       @letter_pool = DEFAULT_LETTERS
