@@ -22,20 +22,17 @@ module Filestorage
     end
 
     def store(file)
-      begin
-        filename = gen_random + File.extname(file)
-        d1 = filename[0, 2].upcase
-        d2 = filename[2, 2].upcase
-        path = Pathname.new(d1) / d2
-        if sensitive_file_exist?(path, filename)
-          raise AlreadyExist.new("Already exist #{path / filename}")
-        end
-        path = path / filename
-        super(file, path)
-      rescue AlreadyExist
-        retry
+      filename = gen_random + File.extname(file)
+      d1 = filename[0, 2].upcase
+      d2 = filename[2, 2].upcase
+      path = Pathname.new(d1) / d2
+      if sensitive_file_exist?(path, filename)
+        raise AlreadyExist.new("Already exist #{path / filename}")
       end
-      path.to_s
+      path = path / filename
+      super(file, path)
+    rescue AlreadyExist
+      retry
     end
 
     private
