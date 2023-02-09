@@ -55,6 +55,12 @@ module Filestorage
       [true, false].sample ? c.upcase : c
     end
 
+    def sensitive_file_exist?(path, filename)
+      if @case_sensitive && path.exist?
+        path.children.map{|f| f.basename.to_s.upcase }.include?(filename.upcase)
+      end
+    end
+
   end   # of class LocalRandom
 
 end   # of module Filestorage
