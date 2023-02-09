@@ -35,7 +35,7 @@ module Filestorage
       rescue AlreadyExist
         retry
       end
-      path
+      path.to_s
     end
 
     private
