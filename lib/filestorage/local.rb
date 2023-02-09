@@ -28,7 +28,7 @@ module Filestorage
           f.write(file)
         end
       end
-      path
+      path.to_s
     end
 
     def get(path)
